@@ -1,13 +1,13 @@
 package br.com.mybank.models.conta;
 
-import br.com.mybank.OperacaoConsulta;
-import br.com.mybank.OperacaoInvestir;
+import br.com.mybank.interfaces.OperacaoConsulta;
+import br.com.mybank.interfaces.OperacaoInvestir;
 import br.com.mybank.models.cliente.Cliente;
 
 public class ContaCorrente  extends Conta implements OperacaoConsulta, OperacaoInvestir{
 
-  public ContaCorrente(String agencia, Cliente cliente) {
-    super(agencia);
+  public ContaCorrente(String numero, Cliente cliente) {
+    super(numero);
     super.cliente = cliente; 
   }
 

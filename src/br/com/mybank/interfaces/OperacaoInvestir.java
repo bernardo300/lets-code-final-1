@@ -1,5 +1,4 @@
-package br.com.mybank;
-
+package br.com.mybank.interfaces;
 
 public interface OperacaoInvestir {
   public void investir(double valor);

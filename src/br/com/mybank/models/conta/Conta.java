@@ -10,13 +10,12 @@ public abstract class Conta{
   protected Cliente cliente;
   private double valorInvestido;
   
+  public Conta(String numero){
+    this.numeroConta = numero;
+  }
 
   public Cliente getCliente() {
     return cliente;
-  }
-
-  public Conta(String agencia){
-    this.agencia = agencia;
   }
   
   public String getAgencia() {
@@ -77,7 +76,7 @@ public abstract class Conta{
 
   @Override
   public String toString() {
-    return "Agencia: " + this.agencia;
+    return "Numero: " + this.numeroConta;
   }
 
   @Override

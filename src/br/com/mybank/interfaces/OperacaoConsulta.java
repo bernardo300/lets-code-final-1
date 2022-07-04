@@ -1,5 +1,4 @@
-package br.com.mybank;
-
+package br.com.mybank.interfaces;
 public interface OperacaoConsulta {
   public double consultaSaldo();
 }

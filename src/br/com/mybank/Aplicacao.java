@@ -2,20 +2,25 @@ package br.com.mybank;
 
 import java.util.Scanner;
 
+import br.com.mybank.db.MyBankDB;
+import br.com.mybank.models.cliente.ClientePF;
 import br.com.mybank.models.conta.Conta;
+import br.com.mybank.models.conta.ContaCorrente;
 
 public class Aplicacao {
-  public static void main(String[] args) {
-
+    public static void main(String[] args) {
         //basePovoar();
         menuPrincipal();
-
     }
     public static void menuPrincipal(){
         clear();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("NOVA CONTA - 1");
-        System.out.println("LOGIN - 2");
+        System.out.println("___________________________________");
+        System.out.println("|          __SISBB__              |");
+        System.out.println("|                                 |");
+        System.out.println("|1 - NOVA CONTA                   |");
+        System.out.println("|2 - LOGIN                        |");
+        System.out.println("|_________________________________|");
         int escolha = scanner.nextInt();
         switch(escolha){
             case 1:
@@ -27,25 +32,38 @@ public class Aplicacao {
             default:
                 System.out.println("opcao invalida");
         }
-
     }
 
     private static void menuNovaConta() {
         clear();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Agencia: ");
+        System.out.println("___________________________________");
+        System.out.println("           --SISBB--               ");
         System.out.println("Numero da conta: ");
+        String numero = scanner.next();
+        System.out.println("Nome do cliente: ");
+        scanner.nextLine();
+        String cliente = scanner.nextLine();
+        ContaCorrente c = new ContaCorrente(numero, new ClientePF(cliente));
+        MyBankDB.abrirConta(c);
+        menuPrincipal();
     }
 
     private static void menuLogin() {
         clear();
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Numero da conta pra logar: ");
-        String escolha3 = scanner.next();
+        String numero = scanner.next();
+        Conta c = MyBankDB.login(numero);
+        if(c != null){
+            menuConta(numero);
+        }
     }
 
     private static void menuConta(String numero) {
         clear();
+        Conta conta = MyBankDB.login(numero);
         System.out.println("DEPOSITAR :  1");
         System.out.println("TRANSFERIR  : 2");
         Scanner scanner = new Scanner(System.in);
