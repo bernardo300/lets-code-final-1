@@ -51,7 +51,6 @@ public class Aplicacao {
 
     private static void menuLogin() {
         clear();
-
         Scanner scanner = new Scanner(System.in);
         System.out.println("Numero da conta pra logar: ");
         String numero = scanner.next();
@@ -74,13 +73,14 @@ public class Aplicacao {
     private static void menuDepositar(double valor) {
     }
 
-    private static void menuTransferi(double valor, Conta conta) {
+    private static void menuTransferir(double valor, Conta conta) {
     }
 
  
     public static void basePovoar(){
 
     }
+    
     private static void clear(){
       System.out.print("\033[H\033[2J");
       System.out.flush();

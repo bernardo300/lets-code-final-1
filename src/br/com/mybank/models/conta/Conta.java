@@ -76,7 +76,7 @@ public abstract class Conta{
 
   @Override
   public String toString() {
-    return "Numero: " + this.numeroConta;
+    return "Numero: " + this.numeroConta + "Cliente: " + this.cliente.getNome();
   }
 
   @Override
