@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.Scanner;
 
+//package br.com.mybank;
+
 public class Aplicacao {
 
     public static void main(String[] args) throws Exception {
@@ -16,9 +18,6 @@ public class Aplicacao {
             String agencia;
             int conta;
             BigDecimal valor = new BigDecimal(0);
-            BigDecimal taxaRendimento = new BigDecimal(0);
-            BigDecimal taxaSaque = new BigDecimal(0.5);
-
 
             System.out.println("Informe número da agencia");
             agencia = sc.next();
@@ -41,7 +40,7 @@ public class Aplicacao {
             if(tipoCliente.equals("10")){
                 System.out.println("Informe tipo de conta: 1 para Conta Corrente, 2 Conta Investimento");
                 tipoConta = sc.next().trim();
-                if(tipoConta.equals("1"))
+            //    if(tipoConta.equals("1"))
                 if(tipoConta != "1" && tipoConta != "2"){   
                     System.out.println("Pessoas jurídicas não podem ter conta poupança");
                     System.exit(0);
@@ -49,7 +48,7 @@ public class Aplicacao {
             } else {
             //    tipoCliente = "PF";
             //    String[] tp = new String[]{"1","2","3"};
-               System.out.println("Informe tipo de conta: 1 para Conta Corrente, 2 Conta Investimento, 3 Conta Poupança");
+                System.out.println("Informe tipo de conta: 1 para Conta Corrente, 2 Conta Investimento, 3 Conta Poupança");
                 tipoConta = sc.next().trim();
                 if(!(tipoConta.equals("1")) && !(tipoConta.equals("2")) && !(tipoConta.equals("3")) ) {
              //   if(tipoConta != "1" && tipoConta != "2" && tipoConta != "3"){   
@@ -60,13 +59,13 @@ public class Aplicacao {
 
             switch (tipoConta) {
                 case "1":
-                    operaContaCorrente(agencia, conta, valor, operacao);
+                    operaContaCorrente(agencia, conta, valor, operacao, tipoCliente);
                     break;
                 case "2":
-                    operaContaInvestimento(agencia, conta, valor, operacao);
+                    operaContaInvestimento(agencia, conta, valor, operacao, tipoCliente);
                     break;
                 case "3":
-                    operaContaPoupanca(agencia, conta, valor, operacao);
+                    operaContaPoupanca(agencia, conta, valor, operacao,tipoCliente);
                     break;
             }
         } catch (Exception e) {
@@ -77,43 +76,58 @@ public class Aplicacao {
         }
     }
 
-    public static void operaContaCorrente(String agencia, int conta, BigDecimal valor, String operacao) throws SaldoInsuficienteException {
+    public static void operaContaCorrente(String agencia, int conta, BigDecimal valor, String operacao, String tipoCliente) 
+        throws MensagemErro {
         ContaCorrente cc = new ContaCorrente(agencia, conta, valor);
         System.out.println("entrou em CC");
         switch(operacao){
             case "1":
-                cc.depositarPF(valor);
+                cc.depositar(valor);
                 break;
             case "2":
-                cc.sacarPF(valor);
+                if(tipoCliente.equals("10")){
+                    cc.sacarPJ(valor);
+                } else cc.sacarPF(valor);
+                    cc.sacarPF(valor);
                 break;
             case "3":
-            //        cc.transferir(valor, destino);
-                cc.sacarPF(valor);
-            case "4":
-            //    cc.setTaxa(taxaSaque);
+                ContaCorrente cd = new ContaCorrente(agencia, conta, valor);
+                if(tipoCliente.equals("10")){
+                    cc.sacarPJ(valor);
+                } else cc.sacarPF(valor);
+
+                cd.depositar(valor);
                 break;
         }
     }
 
-    public static void operaContaInvestimento(String agencia, int conta, BigDecimal valor,String operacao) throws SaldoInsuficienteException {
+    public static void operaContaInvestimento(String agencia, int conta, BigDecimal valor,String operacao, String tipoCliente)
+        throws MensagemErro {
         ContaInvestimento ci = new ContaInvestimento(agencia, conta, valor);
         System.out.println("entrou em CI");
         switch(operacao){
             case "1":
-                ci.depositarInvestimento(valor);
+                ci.depositar(valor);
                 break;
             case "2":
-                ci.sacarInvestimento(valor);
+                 if(tipoCliente.equals("10")){
+                     ci.sacar(valor);
+                 } else ci.sacar(valor);
+                     ci.sacar(valor);
                 break;
             case "3": 
-            //    ci.setTaxaRendimento(taxaRendimento);
+                ContaCorrente cd = new ContaCorrente(agencia, conta, valor);
+                if(tipoCliente.equals("10")){
+                    ci.sacar(valor);
+                } else ci.sacar(valor);
+                cd.depositar(valor);
                 break;
         }
 
     }
 
-    public static void operaContaPoupanca(String agencia, int conta, BigDecimal valor, String operacao) throws SaldoInsuficienteException {
+    public static void operaContaPoupanca(String agencia, int conta, BigDecimal valor, String operacao, String tipoCliente) 
+        throws MensagemErro {
         ContaPoupanca cp = new ContaPoupanca(agencia, conta, valor);
         System.out.println("entrou em CP");
         switch(operacao){
@@ -121,13 +135,18 @@ public class Aplicacao {
                 cp.depositarPoupanca(valor);
                 break;
             case "2":
-                cp.sacarPoupanca(valor);
+                if(tipoCliente.equals("10")){
+                    cp.sacar(valor);
+                } else cp.sacar(valor);
+                    cp.sacar(valor);
                 break;
-            case "3": 
-            //    cp.setTaxaRendimento(taxaRendimento);
+            case "3":
+                ContaCorrente cd = new ContaCorrente(agencia, conta, valor);
+                if(tipoCliente.equals("10")){
+                    cp.sacar(valor);
+                } else cp.sacar(valor);
+                cd.depositar(valor);
                 break;
         }
-
     }
-
 }
