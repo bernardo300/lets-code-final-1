@@ -28,7 +28,7 @@ A classe Conta é uma classe abstrata com os atributos:
 ### ContaCorrente
 Filha da classe Conta, com uma sobreescrita do método "sacar" 
 ### Transferências
-As transferências só para outros titulares ou banco somente são feitas a partir da conta corrente. 
-Transferências entre entre contas corrente, investimento e poupança do mesmo titular e banco não sofrem taxação.
-As contas pessoas jurídicas (PJ) sempre começam com a dezena "10".
+- As transferências para outros titulares ou bancso somente são feitas a partir da conta corrente. 
+- Transferências entre contas correntes, investimento e poupança do mesmo titular e banco não sofrem taxação.
+- As contas pessoas jurídicas(PJ) sempre começam com a dezena "10".
 
