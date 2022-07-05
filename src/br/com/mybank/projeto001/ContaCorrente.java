@@ -12,36 +12,24 @@ public class ContaCorrente extends Conta{
     }
 
     //@Override
-    public void sacar(BigDecimal valor) throws MensagemErro {   
-        if(super.getTipoCliente() == "PF") {
-        //    public void sacarPF(BigDecimal valor) throws MensagemErro{
-            super.sacar(valor);
-        } else {
-            valorTaxa = calculaValorTaxa(valor);
-            System.out.println(("taxa e valor dentro do sacarPJ: " + valorTaxa + " " + valor));
-            this.valor = valor.add(valorTaxa);
-            super.sacar(this.valor);
-        }
-    }    
+    public void depositar(BigDecimal valor) throws MensagemErro{    
+        System.out.println(("valor dentro do deposito: " + valor));
+        super.depositar(valor);
+    }
 
-    /*
+    public void sacarPF(BigDecimal valor) throws MensagemErro{
+        super.sacar(valor);
+    }
+
     public void sacarPJ(BigDecimal valor) throws MensagemErro{
         valorTaxa = calculaValorTaxa(valor);
         System.out.println(("taxa e valor dentro do sacarPJ: " + valorTaxa + " " + valor));
         this.valor = valor.add(valorTaxa);
         super.sacar(this.valor);
     }
-    */
 
-    //  na transferência de conta corrente é o this.sacar, pois o valor a sacar é com o desconto
-    @Override
-    public void transferir(BigDecimal valor, Conta cd) throws MensagemErro { 
-        this.sacar(valor);
-        cd.depositar(valor);
-    }
-    
     public BigDecimal calculaValorTaxa(BigDecimal valor){  
-        this.valorTaxa = valor.multiply(BigDecimal.valueOf(this.taxa.doubleValue()/100));
+        this.valorTaxa = valor.multiply(this.taxa.divide(new BigDecimal(100)));
         return this.valorTaxa;
     }
 

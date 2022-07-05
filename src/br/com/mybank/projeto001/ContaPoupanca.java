@@ -11,20 +11,13 @@ public class ContaPoupanca extends Conta{
         super.setConta(conta);
     }
 
-    /*
-    public void sacar(BigDecimal valor) throws MensagemErro {
+    public void sacarPoupanca(BigDecimal valor) throws MensagemErro {
         super.sacar(valor);
     }
 
-    public void depositar(BigDecimal valor) throws MensagemErro{  
+    public void depositarPoupanca(BigDecimal valor) throws MensagemErro{  
         super.depositar(valor);
     }
-
-    public void transferir(BigDecimal valor, Conta cd) throws MensagemErro { 
-        this.sacar(valor);
-        cd.depositar(valor);
-    }
-    */
 
     public BigDecimal jurosPoupanca(){
         this.saldoPoupanca = super.getSaldo();
@@ -33,9 +26,7 @@ public class ContaPoupanca extends Conta{
     }
 
     public BigDecimal getsaldoPoupancaComJuros() {
-        this.saldoPoupanca = super.getSaldo();
         this.saldoPoupanca = this.saldoPoupanca.add(jurosPoupanca());
-        super.setSaldo(this.saldoPoupanca);
         return saldoPoupanca;
     }
 
