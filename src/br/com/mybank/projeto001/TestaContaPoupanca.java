@@ -18,7 +18,7 @@ public class TestaContaPoupanca {
         System.out.printf("Valor do depósito: " + deposito + "  " + "valor do saque: " + saque);
 
         ci.setTaxaRendimento(taxa);
-        ci.depositarPoupanca(deposito);
+        ci.depositar(deposito);
         sd = ci.getSaldo();
         System.out.println(" ");
         System.out.println("saldo após depósito poupança metodo depositarpoupanca " + sd);
