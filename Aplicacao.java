@@ -142,11 +142,11 @@ public class Aplicacao {
         ContaInvestimento ci = new ContaInvestimento(agencia, conta);
         ci.setTipoCliente(tipoCliente);
 
-        System.out.println("entrou em CI");
-
+        System.out.println("entrou em CI  " + " saldo com juros: ");
         switch(operacao){
             case "1":
                 ci.depositar(valor);
+                System.out.println("saldo com juros: " + ci.getSaldoInvestimentoComJuros());
                 break;
             case "2":
                 ci.sacar(valor);

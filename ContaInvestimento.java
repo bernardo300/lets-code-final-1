@@ -1,7 +1,7 @@
 import java.math.BigDecimal;
 
 public class ContaInvestimento extends Conta{
-    private BigDecimal taxaRendimento = new BigDecimal(0);
+    private BigDecimal taxaRendimento = new BigDecimal(3);
     private BigDecimal juros = new BigDecimal(0);
     private BigDecimal saldoInvestimento = new BigDecimal(0);
     private String tipoCliente;
@@ -13,6 +13,9 @@ public class ContaInvestimento extends Conta{
     }
 
     public BigDecimal jurosInvestimento(){
+        if(tipoCliente == "PJ") {
+            this.setTaxaRendimento(this.taxaRendimento = this.taxaRendimento.add(new BigDecimal(2)));
+        }
         this.saldoInvestimento = super.getSaldo();
         this.juros = this.saldoInvestimento.multiply(this.taxaRendimento);
         return this.juros;
@@ -27,7 +30,7 @@ public class ContaInvestimento extends Conta{
         juros = jurosInvestimento();
         this.saldoInvestimento = this.saldoInvestimento.add(juros);
         super.setSaldo(this.saldoInvestimento);
-        return this.saldoInvestimento;
+        return super.getSaldo();
     }
     
     public BigDecimal getTaxaRendimento() {
