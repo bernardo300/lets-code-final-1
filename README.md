@@ -27,8 +27,12 @@ A classe Conta é uma classe abstrata com os atributos:
 - numeroConta -> do tipo inteiro;
 ### ContaCorrente
 Filha da classe Conta, com uma sobreescrita do método "sacar" 
-### Transferências
+- ### Transferências
 - As transferências para outros titulares ou bancso somente são feitas a partir da conta corrente. 
 - Transferências entre contas correntes, investimento e poupança do mesmo titular e banco não sofrem taxação.
 - As contas pessoas jurídicas(PJ) sempre começam com a dezena "10".
+### contaInvestimento
+- a taxa de rendimento poderá ser alterada com o método setTaxaRendimento;
+- o valor com os juros pode ser obtido com os métodos getSaldoInvestimentoComJuros e getSaldoInvestimentoSemJuros. O método getSaldoInvestimentoComJuros permite obter os valor dos investimentos após o decurso de determinado tempo.
+- 
 
