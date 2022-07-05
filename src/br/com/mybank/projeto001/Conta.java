@@ -19,14 +19,12 @@ public abstract class Conta {
     public void depositar(BigDecimal valor) throws MensagemErro {
         saldo = saldo.add(valor);
     }
-
-    /*
+    
     public void transferir(BigDecimal valor, Conta cd) throws MensagemErro { 
         this.sacar(valor);
         cd.depositar(valor);
     }
-    */
-
+    
     public BigDecimal getSaldo() {
         return saldo;
     }

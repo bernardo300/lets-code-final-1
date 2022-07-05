@@ -11,11 +11,6 @@ public class ContaCorrente extends Conta{
         super.setConta(conta);
     }
 
-    @Override
-    public void depositar(BigDecimal valor) throws MensagemErro{    
-        super.depositar(valor);
-    }
-
     //@Override
     public void sacar(BigDecimal valor) throws MensagemErro {   
         if(super.getTipoCliente() == "PF") {
@@ -37,7 +32,9 @@ public class ContaCorrente extends Conta{
         super.sacar(this.valor);
     }
     */
-    
+
+    //  na transferência de conta corrente é o this.sacar, pois o valor a sacar é com o desconto
+    @Override
     public void transferir(BigDecimal valor, Conta cd) throws MensagemErro { 
         this.sacar(valor);
         cd.depositar(valor);

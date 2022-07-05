@@ -10,20 +10,20 @@ public class ContaInvestimento extends Conta{
         super.setConta(conta);
     }
 
-    //@Override
+    /*
     public void depositar(BigDecimal valor) throws MensagemErro {           
         super.depositar(valor);
     }
 
-    //@Override
     public void sacar(BigDecimal valor) throws MensagemErro{  
         super.sacar(valor);
     }
 
     public void transferir(BigDecimal valor, Conta cd) throws MensagemErro { 
-        this.sacar(valor);
+        super.sacar(valor);
         cd.depositar(valor);
     }
+    */
 
     public BigDecimal jurosInvestimento(){
         this.saldoInvestimento = super.getSaldo();
