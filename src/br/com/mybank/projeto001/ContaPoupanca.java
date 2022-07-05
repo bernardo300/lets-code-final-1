@@ -30,7 +30,7 @@ public class ContaPoupanca extends Conta{
         return taxaRendimento;
     }
     public void setTaxaRendimento(BigDecimal taxa) {
-        this.taxaRendimento = taxaRendimento.divide(new BigDecimal(100));
+        this.taxaRendimento = taxaRendimento.divide(new BigDecimal(100));   
     }
     public BigDecimal getJuros() {
         return this.juros;

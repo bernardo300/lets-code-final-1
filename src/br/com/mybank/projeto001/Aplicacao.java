@@ -98,12 +98,12 @@ public class Aplicacao {
             case "2":
                 switch(tipoCliente){
                     case "PJ":
-                    System.out.println(" entrou em sacar PJ");     // LIXO
-                        cc.sacarPJ(valor);
-                        System.out.println(" saldo apos sacar PJ: " + cc.getSaldo());
+                    System.out.println(" entrou em sacar PJ: " + cc.getSaldo());     // LIXO
+                        cc.sacar(valor);
+                        System.out.println(" saldo apos sacar PJ: " + cc.getSaldo() + "  " + cc.getTaxa());
                         break;
                     case "PF":
-                        cc.sacarPF(valor);
+                        cc.sacar(valor);
                         System.out.println(" saldo apos sacar PF: " + cc.getSaldo());
 
                         break;

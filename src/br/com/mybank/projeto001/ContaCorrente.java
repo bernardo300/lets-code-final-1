@@ -5,24 +5,25 @@ public class ContaCorrente extends Conta{
     private BigDecimal taxa = new BigDecimal(0.5);
     private BigDecimal valor = new BigDecimal(0);
     private BigDecimal valorTaxa = new BigDecimal(0);
+    private String tipoCliente;
 
     public ContaCorrente(String agencia, int conta, BigDecimal valor){
         super.setAgencia(agencia);
         super.setConta(conta);
     }
 
-    public void sacarPF(BigDecimal valor) throws MensagemErro{
-        super.sacar(valor);
-    }
-
-    public void sacarPJ(BigDecimal valor) throws MensagemErro{
-        valorTaxa = calculaValorTaxa(valor);
-        this.valor = valor.add(valorTaxa);
-        super.sacar(this.valor);
+    public void sacar(BigDecimal valor) throws MensagemErro{
+        if(tipoCliente == "PF") {                // falta passar tipoCliente via Cliente via setTipoCliente
+            super.sacar(valor);
+        } else {
+            valorTaxa = calculaValorTaxa(valor);
+            this.valor = valor.add(valorTaxa);
+            super.sacar(this.valor);
+        }
     }
 
     public BigDecimal calculaValorTaxa(BigDecimal valor){  
-        this.valorTaxa = valor.multiply(this.taxa.divide(new BigDecimal(100)));
+        this.valorTaxa = valor.multiply(this.taxa.divide(new BigDecimal(100)));  
         return this.valorTaxa;
     }
 
@@ -40,6 +41,13 @@ public class ContaCorrente extends Conta{
 
     public void setTaxa(BigDecimal taxa) {
         this.taxa = taxa;
+    }
+    public String getTipoCliente() {
+        return tipoCliente;
+    }
+
+    public void setTipoCliente(String tipoCliente) {
+        this.tipoCliente = tipoCliente;
     }
 
 }

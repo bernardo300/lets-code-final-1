@@ -33,7 +33,7 @@ public class ContaInvestimento extends Conta{
         return taxaRendimento;
     }
     public void setTaxaRendimento(BigDecimal taxaRendimento) {
-        this.taxaRendimento = taxaRendimento.divide(new BigDecimal(100));
+        this.taxaRendimento = taxaRendimento.divide(new BigDecimal(100));    
     }
 
     public BigDecimal getJuros() {

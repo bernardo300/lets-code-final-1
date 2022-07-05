@@ -30,7 +30,7 @@ public class TestaContaCorrente {
 
         // Testa saque PF
         ct.setTaxa(taxa);
-        ct.sacarPF(saque);
+        ct.sacar(saque);
         sd = ct.getSaldo();
         System.out.println(" ");
         System.out.println("saldo após saque PF: " + sd);
@@ -44,7 +44,7 @@ public class TestaContaCorrente {
 
         // Testa saque PJ
          ct.setTaxa(taxa);
-         ct.sacarPJ(saque);
+         ct.sacar(saque);
 
          System.out.println("o valor da taxa para sq e transfer: " + ct.calculaValorTaxa(saque));
 
@@ -61,7 +61,7 @@ public class TestaContaCorrente {
 
          // Testa transferir PF
          System.out.println("valor da transferencia: " + valorTransfer);
-         ct.sacarPF(valorTransfer);
+         ct.sacar(valorTransfer);
          System.out.println("saldo depois da transfer com sacar: " + ct.getSaldo());
          cd.depositar(valorTransfer);
          sd = ct.getSaldo();
@@ -71,7 +71,7 @@ public class TestaContaCorrente {
  
         //  Testa transferir PJ
          System.out.println("valor da transferencia: " + valorTransfer);
-         ct.sacarPJ(valorTransfer);
+         ct.sacar(valorTransfer);
          System.out.println("saldo depois da transfer com sacar: " + ct.getSaldo());
          cd.depositar(valorTransfer);
          sd = ct.getSaldo();
