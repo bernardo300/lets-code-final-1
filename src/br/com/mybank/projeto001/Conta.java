@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public abstract class Conta {
     private BigDecimal saldo = new BigDecimal(0);
@@ -26,6 +27,7 @@ public abstract class Conta {
     }
     
     public BigDecimal getSaldo() {
+        this.saldo = saldo.setScale(2, RoundingMode.DOWN);
         return saldo;
     }
     public void setSaldo(BigDecimal saldo) {

@@ -11,19 +11,12 @@ public class ContaCorrente extends Conta{
         super.setConta(conta);
     }
 
-    //@Override
-    public void depositar(BigDecimal valor) throws MensagemErro{    
-        System.out.println(("valor dentro do deposito: " + valor));
-        super.depositar(valor);
-    }
-
     public void sacarPF(BigDecimal valor) throws MensagemErro{
         super.sacar(valor);
     }
 
     public void sacarPJ(BigDecimal valor) throws MensagemErro{
         valorTaxa = calculaValorTaxa(valor);
-        System.out.println(("taxa e valor dentro do sacarPJ: " + valorTaxa + " " + valor));
         this.valor = valor.add(valorTaxa);
         super.sacar(this.valor);
     }
