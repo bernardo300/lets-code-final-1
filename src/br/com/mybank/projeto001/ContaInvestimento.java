@@ -11,16 +11,6 @@ public class ContaInvestimento extends Conta{
         super.setConta(conta);
     }
 
-    //@Override
-    public void depositar(BigDecimal valor) throws MensagemErro {           
-        super.depositar(valor);
-    }
-
-    @Override
-    public void sacar(BigDecimal valor) throws MensagemErro{  
-        super.sacar(valor);
-    }
-
     public BigDecimal jurosInvestimento(){
         this.saldoInvestimento = super.getSaldo();
         this.juros = this.saldoInvestimento.multiply(this.taxaRendimento);
@@ -43,7 +33,7 @@ public class ContaInvestimento extends Conta{
         return taxaRendimento;
     }
     public void setTaxaRendimento(BigDecimal taxaRendimento) {
-        this.taxaRendimento = BigDecimal.valueOf(taxaRendimento.doubleValue()/100);
+        this.taxaRendimento = taxaRendimento.divide(new BigDecimal(100));
     }
 
     public BigDecimal getJuros() {
