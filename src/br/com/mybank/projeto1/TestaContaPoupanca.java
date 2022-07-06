@@ -1,3 +1,4 @@
+package br.com.mybank.projeto1;
 import java.math.BigDecimal;
 public class TestaContaPoupanca {
 
@@ -9,7 +10,7 @@ public class TestaContaPoupanca {
         
         BigDecimal sd = new BigDecimal(0);
 
-        ContaPoupanca ci = new ContaPoupanca("5114", 12345);
+        ContaPoupanca ci = new ContaPoupanca("5114", 12345, new ClientePessoFisica("nome"));
 
         // TESTES PARA PESSOA FÍSICA
 

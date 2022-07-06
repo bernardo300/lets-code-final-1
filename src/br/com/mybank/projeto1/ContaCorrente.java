@@ -1,3 +1,4 @@
+package br.com.mybank.projeto1;
 import java.math.BigDecimal;
 
 public class ContaCorrente extends Conta{
@@ -5,15 +6,14 @@ public class ContaCorrente extends Conta{
     private BigDecimal taxa = new BigDecimal(0.5);
     private BigDecimal valor = new BigDecimal(0);
     private BigDecimal valorTaxa = new BigDecimal(0);
-    private String tipoCliente;
 
-    public ContaCorrente(String agencia, int conta, BigDecimal valor){
-        super.setAgencia(agencia);
-        super.setConta(conta);
+//    public ContaCorrente(String agencia, int conta, BigDecimal valor){
+    public ContaCorrente(String agencia, int conta, Cliente titular){
+        super(agencia, conta, titular);
     }
 
     public void sacar(BigDecimal valor) throws MensagemErro{
-        if(tipoCliente == "PF") {                // falta passar tipoCliente via Cliente via setTipoCliente
+        if(getTitular() instanceof ClientePessoFisica) {                // falta passar tipoCliente via Cliente via setTipoCliente
             super.sacar(valor);
         } else {
             valorTaxa = calculaValorTaxa(valor);
@@ -42,12 +42,4 @@ public class ContaCorrente extends Conta{
     public void setTaxa(BigDecimal taxa) {
         this.taxa = taxa;
     }
-    public String getTipoCliente() {
-        return tipoCliente;
-    }
-
-    public void setTipoCliente(String tipoCliente) {
-        this.tipoCliente = tipoCliente;
-    }
-
 }

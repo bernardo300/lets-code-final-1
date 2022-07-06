@@ -1,3 +1,4 @@
+package br.com.mybank.projeto1;
 
 public enum TipoConta{
     FISICA("Conta Pessoal"),

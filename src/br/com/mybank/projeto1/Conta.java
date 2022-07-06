@@ -1,3 +1,4 @@
+package br.com.mybank.projeto1;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -5,8 +6,14 @@ public abstract class Conta {
     private BigDecimal saldo = new BigDecimal(0);
     private int conta = 0;
     private String agencia;
-    private String titular;
-    private String tipoCliente;
+    private Cliente titular;
+
+    public Conta(String agencia, int conta, Cliente titular){
+        this.agencia = agencia;
+        this.conta = conta;
+        this.titular = titular;
+    }
+
 
     public void sacar(BigDecimal valor) throws MensagemErro {
         if (saldo.compareTo(valor) == 1 || saldo.compareTo(valor) == 0) {
@@ -45,19 +52,13 @@ public abstract class Conta {
     public void setAgencia(String agencia) {
         this.agencia = agencia;
     }
-    public String getTitular() {
-        return titular;
+
+    public Cliente getTitular() {
+        return this.titular;
     }
 
-    public void setTitular(String titular) {
+    public void setTitular(Cliente titular) {
         this.titular = titular;
-    }
-    public String getTipoCliente() {
-        return tipoCliente;
-    }
-
-    public void setTipoCliente(String tipoCliente) {
-        this.tipoCliente = tipoCliente;
     }
 
 }

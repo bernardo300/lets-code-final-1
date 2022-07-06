@@ -1,3 +1,4 @@
+package br.com.mybank.projeto1;
 import java.math.BigDecimal;
 
 public class TestaContaCorrente {
@@ -14,8 +15,8 @@ public class TestaContaCorrente {
         BigDecimal sdd = new BigDecimal(0);
 
 
-        ContaCorrente ct = new ContaCorrente("5114", 12345, deposito);
-        ContaCorrente cd = new ContaCorrente(ageDestino, contaDestino, valorTransfer);
+        ContaCorrente ct = new ContaCorrente("5114", 12345, new ClientePessoFisica("Bill Gates"));
+        ContaCorrente cd = new ContaCorrente(ageDestino, contaDestino, new ClientePessoaJuridica("nos"));
 
         // TESTES PARA PESSOA FÍSICA
 
@@ -34,9 +35,9 @@ public class TestaContaCorrente {
         sd = ct.getSaldo();
         System.out.println(" ");
         System.out.println("saldo após saque PF: " + sd);
+        
 
         //set e get titular
-        ct.setTitular("Bill Gates");
         System.out.println("O titular é: " + ct.getTitular());
         
 

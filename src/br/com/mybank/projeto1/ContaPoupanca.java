@@ -1,16 +1,15 @@
+package br.com.mybank.projeto1;
 import java.math.BigDecimal;
 
 public class ContaPoupanca extends Conta{
     private BigDecimal taxaRendimento = new BigDecimal(0);
     private BigDecimal juros = new BigDecimal(0);
     private BigDecimal saldoPoupanca = new BigDecimal(0);
-    private String tipoCliente;
 
     //public ContaPoupanca(String agencia, int conta, BigDecimal valor){
-    public ContaPoupanca(String agencia, int conta){   
-        super.setAgencia(agencia);
-        super.setConta(conta);
-    }
+        public ContaPoupanca(String agencia, int conta, ClientePessoFisica titular){
+            super(agencia, conta, titular);
+        }
 
     public BigDecimal jurosPoupanca(){
         this.saldoPoupanca = super.getSaldo();
@@ -38,13 +37,5 @@ public class ContaPoupanca extends Conta{
     }
     public void setJuros(BigDecimal juros) {
         this.juros = juros;
-    }
-
-    public String getTipoCliente() {
-        return tipoCliente;
-    }
-
-    public void setTipoCliente(String tipoCliente) {
-        this.tipoCliente = tipoCliente;
     }
 }

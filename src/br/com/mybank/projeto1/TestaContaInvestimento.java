@@ -1,5 +1,7 @@
+package br.com.mybank.projeto1;
 import java.math.BigDecimal;
-public class TestaContaPoupanca {
+
+public class TestaContaInvestimento {
 
     public static void main(String[] args) throws MensagemErro {
         BigDecimal deposito = new BigDecimal("2000.40");
@@ -9,7 +11,7 @@ public class TestaContaPoupanca {
         
         BigDecimal sd = new BigDecimal(0);
 
-        ContaPoupanca ci = new ContaPoupanca("5114", 12345, deposito);
+        ContaInvestimento ci = new ContaInvestimento("5114", 12345, new ClientePessoFisica("nome"));
 
         // TESTES PARA PESSOA FÍSICA
 
@@ -21,7 +23,7 @@ public class TestaContaPoupanca {
         ci.depositar(deposito);
         sd = ci.getSaldo();
         System.out.println(" ");
-        System.out.println("saldo após depósito poupança metodo depositarpoupanca " + sd);
+        System.out.println("saldo após depósito investimento depositarinvestimento: " + sd);
 
         ci.setTaxaRendimento(taxa);
         ci.depositar(deposito);
@@ -32,20 +34,20 @@ public class TestaContaPoupanca {
         System.out.println("valor da taxa: " + ci.getTaxaRendimento());
 
         ci.setTaxaRendimento(taxa);
-        sd = ci.getsaldoPoupancaSemJuros();
+        sd = ci.getSaldoInvestimentoSemJuros();
         System.out.println(" ");
         System.out.println("saldo investimento SEM juros " + sd);
 
         ci.setTaxaRendimento(taxa);
-        sd = ci.getsaldoPoupancaComJuros();
+        sd = ci.getSaldoInvestimentoComJuros();
         System.out.println(" ");
-        System.out.println("saldo investimento COM juros " + sd);
+        System.out.println("saldo investimento com juros " + sd);
 
        
         ci.depositar(deposito);
         sd = ci.getJuros();
         System.out.println(" ");
-        System.out.println("juros da poupança " + sd);
+        System.out.println("juros do investimento " + sd);
  
     }
 }
