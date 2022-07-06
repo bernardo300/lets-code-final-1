@@ -7,9 +7,9 @@ public class ContaInvestimento extends Conta{
     private BigDecimal saldoInvestimento = new BigDecimal(0);
 
     //public ContaInvestimento(String agencia, int conta, BigDecimal valor){
-        public ContaInvestimento(String agencia, int conta, Cliente titular){
-            super(agencia, conta, titular);
-        }
+    public ContaInvestimento(String agencia, int conta, Cliente titular){
+        super(agencia, conta, titular);
+    }
 
     public BigDecimal jurosInvestimento(){
         if(getTitular() instanceof ClientePessoaJuridica) {
