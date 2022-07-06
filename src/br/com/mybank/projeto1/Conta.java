@@ -61,4 +61,9 @@ public abstract class Conta {
         this.titular = titular;
     }
 
+    @Override
+    public String toString() {
+    return "Saldo: " + this.saldo;
+    }
+
 }
