@@ -1,9 +1,9 @@
 package br.com.mybank.models.cliente;
 
-public class ClientePessoFisica extends Cliente{
+public class ClientePessoaFisica extends Cliente{
   private String cpf;
 
-  public ClientePessoFisica(String nome) {
+  public ClientePessoaFisica(String nome) {
     super(nome);
   }
 
