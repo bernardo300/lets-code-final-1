@@ -14,7 +14,7 @@ import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
-import br.com.mybank.models.cliente.ClientePessoFisica;
+import br.com.mybank.models.cliente.ClientePessoaFisica;
 import br.com.mybank.models.conta.ContaPoupanca;
 import br.com.mybank.models.exceptions.MensagemErro;
 
@@ -27,7 +27,7 @@ public class ContaPoupancaFisicaTest{
   @BeforeAll
   @DisplayName("Inicializa a conta com R$ 1000 de saldo")
   public static void  setup() throws MensagemErro{
-      contaPoupanca = new ContaPoupanca("001", 111, new ClientePessoFisica("Bernardo"));
+      contaPoupanca = new ContaPoupanca("001", 111, new ClientePessoaFisica("Bernardo"));
       contaPoupanca.depositar(new BigDecimal("1000.00"));   
   }
 
