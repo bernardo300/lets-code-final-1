@@ -49,7 +49,7 @@ public class ContaCorrenteJuridicaTest{
 
   @Test
   @DisplayName("Saca da conta R$ 100.00 com taxa de 10%")
-  @Order(2)
+  @Order(3)
   public void testsaquecomTaxaDiferente() throws MensagemErro{
     contaCorrente.setTaxa(new BigDecimal("10"));
     contaCorrente.sacar(new BigDecimal("100.00"));
