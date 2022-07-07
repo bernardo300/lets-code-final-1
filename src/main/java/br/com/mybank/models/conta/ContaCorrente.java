@@ -5,7 +5,7 @@ import br.com.mybank.models.cliente.Cliente;
 import br.com.mybank.models.cliente.ClientePessoFisica;
 import br.com.mybank.models.exceptions.MensagemErro;
 
-public class ContaCorrente extends Conta{
+public class ContaCorrente extends Conta implements ConsultaSaldo {
     private BigDecimal limite = new BigDecimal(0);
     private BigDecimal taxa = new BigDecimal(0.5);
     private BigDecimal valor = new BigDecimal(0);
@@ -45,5 +45,8 @@ public class ContaCorrente extends Conta{
 
     public void setTaxa(BigDecimal taxa) {
         this.taxa = taxa;
+    }
+    public BigDecimal consultarSaldo(){
+        return super.getSaldo();
     }
 }
