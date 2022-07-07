@@ -30,9 +30,10 @@ Filha da classe Conta, com uma sobreescrita do método "sacar"
 - ### Transferências
 - As transferências para outros titulares ou bancso somente são feitas a partir da conta corrente. 
 - Transferências entre contas correntes, investimento e poupança do mesmo titular e banco não sofrem taxação.
-- As contas pessoas jurídicas(PJ) sempre começam com a dezena "10".
+- Implementamos a interface com o método consultaSaldo, que foi detalhado nas classes ContaCorrente e ContaPoupanca; 
 ### contaInvestimento
-- a taxa de rendimento poderá ser alterada com o método setTaxaRendimento;
-- o valor com os juros pode ser obtido com os métodos getSaldoInvestimentoComJuros e getSaldoInvestimentoSemJuros. O método getSaldoInvestimentoComJuros permite obter os valor dos investimentos após o decurso de determinado tempo.
-- 
+- a taxa de rendimento da pessoa física poderá ser alterada com o método setTaxaRendimento. A taxa da pessoa física é a taxa básica, sendo que a taxa da pessoa jurídica será sempre a taxa básica mais 2%; 
+- o valor dos juros pode pode ser obtido com o método jurosInvestimento. O método getSaldo permite obter os valor dos investimentos com juros.
+-### contaPoupança
+- Implementamos a interface com o método consultaSaldo, que foi detalhado nas classes ContaCorrente e ContaPoupanca; 
 
