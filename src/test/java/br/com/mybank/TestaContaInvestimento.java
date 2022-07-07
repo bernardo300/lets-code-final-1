@@ -38,12 +38,12 @@ public class TestaContaInvestimento {
         System.out.println("valor da taxa: " + ci.getTaxaRendimento());
 
         ci.setTaxaRendimento(taxa);
-        sd = ci.getSaldoInvestimentoSemJuros();
+        //sd = ci.getSaldoInvestimentoSemJuros();
         System.out.println(" ");
         System.out.println("saldo investimento SEM juros " + sd);
 
         ci.setTaxaRendimento(taxa);
-        sd = ci.getSaldoInvestimentoComJuros();
+        //sd = ci.getSaldoInvestimentoComJuros();
         System.out.println(" ");
         System.out.println("saldo investimento com juros " + sd);
 

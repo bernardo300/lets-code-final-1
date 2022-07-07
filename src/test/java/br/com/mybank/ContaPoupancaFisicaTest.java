@@ -20,7 +20,7 @@ import br.com.mybank.models.exceptions.MensagemErro;
 
 
 @TestMethodOrder(OrderAnnotation.class)
-public class ContaPoupancaFTest{
+public class ContaPoupancaFisicaTest{
 
   public static ContaPoupanca contaPoupanca;
     

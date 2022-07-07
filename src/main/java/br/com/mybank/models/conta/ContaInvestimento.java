@@ -1,16 +1,14 @@
 package br.com.mybank.models.conta;
-
 import java.math.BigDecimal;
 
 import br.com.mybank.models.cliente.Cliente;
 import br.com.mybank.models.cliente.ClientePessoaJuridica;
 
 public class ContaInvestimento extends Conta{
-    private BigDecimal taxaRendimento = new BigDecimal(3);
+    private BigDecimal taxaRendimento = new BigDecimal(0);
     private BigDecimal juros = new BigDecimal(0);
     private BigDecimal saldoInvestimento = new BigDecimal(0);
 
-    //public ContaInvestimento(String agencia, int conta, BigDecimal valor){
     public ContaInvestimento(String agencia, int conta, Cliente titular){
         super(agencia, conta, titular);
     }
@@ -24,11 +22,9 @@ public class ContaInvestimento extends Conta{
         return this.juros;
     }
 
-    public BigDecimal getSaldoInvestimentoSemJuros() {
-        return super.getSaldo();
-    }
-
-    public BigDecimal getSaldoInvestimentoComJuros() {
+    @Override
+    public BigDecimal getSaldo(){
+    //public BigDecimal getSaldoInvestimentoComJuros() {
         this.saldoInvestimento = super.getSaldo();
         juros = jurosInvestimento();
         this.saldoInvestimento = this.saldoInvestimento.add(juros);
@@ -50,4 +46,3 @@ public class ContaInvestimento extends Conta{
         this.juros = juros;
     }
 }
-
