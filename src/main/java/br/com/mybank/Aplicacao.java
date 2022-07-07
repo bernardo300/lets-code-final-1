@@ -3,7 +3,7 @@ package br.com.mybank;
 import java.util.Scanner;
 
 import br.com.mybank.db.MyBankDB;
-import br.com.mybank.models.cliente.ClientePessoFisica;
+import br.com.mybank.models.cliente.ClientePessoaFisica;
 import br.com.mybank.models.conta.Conta;
 import br.com.mybank.models.conta.ContaCorrente;
 
@@ -47,7 +47,7 @@ public class Aplicacao {
         System.out.println("Nome do cliente: ");
         scanner.nextLine();
         String cliente = scanner.nextLine();
-        ContaCorrente c = new ContaCorrente(agencia, numero, new ClientePessoFisica(cliente));
+        ContaCorrente c = new ContaCorrente(agencia, numero, new ClientePessoaFisica(cliente));
         MyBankDB.abrirConta(c);
         menuPrincipal();
     }
