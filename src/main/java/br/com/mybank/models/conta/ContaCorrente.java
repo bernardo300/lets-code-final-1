@@ -2,7 +2,7 @@ package br.com.mybank.models.conta;
 import java.math.BigDecimal;
 
 import br.com.mybank.models.cliente.Cliente;
-import br.com.mybank.models.cliente.ClientePessoFisica;
+import br.com.mybank.models.cliente.ClientePessoaFisica;
 import br.com.mybank.models.exceptions.MensagemErro;
 
 public class ContaCorrente extends Conta implements ConsultaSaldo {
@@ -17,7 +17,7 @@ public class ContaCorrente extends Conta implements ConsultaSaldo {
     }
 
     public void sacar(BigDecimal valor) throws MensagemErro{
-        if(getTitular() instanceof ClientePessoFisica) {                // falta passar tipoCliente via Cliente via setTipoCliente
+        if(getTitular() instanceof ClientePessoaFisica) {                // falta passar tipoCliente via Cliente via setTipoCliente
             super.sacar(valor);
         } else {
             valorTaxa = calculaValorTaxa(valor);
