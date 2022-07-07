@@ -5,5 +5,5 @@ public interface ConsultaSaldo {
   /**
    * Implementar na conta corrente e conta poupanca
    */
-  public void consultarSaldo();
+  public BigDecimal consultarSaldo();
 }
