@@ -3,7 +3,7 @@ import java.math.BigDecimal;
 
 import br.com.mybank.models.cliente.ClientePessoaFisica;
 
-public class ContaPoupanca extends Conta implements ConsultaSaldo {
+public class ContaPoupanca extends Conta{
     private BigDecimal taxaRendimento = new BigDecimal(0);
     private BigDecimal juros = new BigDecimal(0);
     private BigDecimal saldoPoupanca = new BigDecimal(0);
@@ -39,8 +39,5 @@ public class ContaPoupanca extends Conta implements ConsultaSaldo {
     }
     public void setJuros(BigDecimal juros) {
         this.juros = juros;
-    }
-    public BigDecimal consultarSaldo(){
-        return super.getSaldo();
     }
 }
