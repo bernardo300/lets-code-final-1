@@ -47,6 +47,12 @@ public class ContaPoupancaFisicaTest{
     assertTrue(contaPoupanca.getSaldo().compareTo(new BigDecimal("1000.00")) == 0);
   }
 
+
+  // @BeforeEach
+  // public void initEach(TestInfo testInfo){
+  //     System.out.println(testInfo.getDisplayName());
+  // }
+
   @AfterEach
   public void endEach(TestInfo testInfo){
       System.out.println(testInfo.getDisplayName());
