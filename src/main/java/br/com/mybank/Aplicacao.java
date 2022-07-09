@@ -36,7 +36,7 @@ public class Aplicacao {
                 menuLogin();
                 break;
             default:
-                System.out.println("opcao invalida");
+                System.out.println("opção inválida");
         }
         //scanner.close();
     }
