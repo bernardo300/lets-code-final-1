@@ -40,5 +40,5 @@ Filha da classe Conta, com uma sobreescrita do método "sacar";
 - o valor dos juros pode pode ser obtido com o método jurosInvestimento. O método getSaldo permite obter os valor dos investimentos com juros.
 ### contaPoupança
 - Implementamos a interface com o método OperacaoConsultaSaldo, OperacaoInvestir, que foi detalhado nas classes ContaCorrente e ContaPoupanca; 
-- Pessoa jurídica náo pode abrir Conta Poupança;
+- Pessoa jurídica não pode abrir Conta Poupança;
 
