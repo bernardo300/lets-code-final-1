@@ -34,11 +34,14 @@ Filha da classe Conta, com uma sobreescrita do método "sacar";
 - As transferências para outros titulares somente são feitas a partir da conta corrente. 
 - Transferências entre contas correntes, investimento e poupança do mesmo titular e banco não sofrem taxação.
 - Implementamos a interface com o método OperacaoConsultaSaldo, OperacaoInvestir, que foi detalhado nas classes ContaCorrente e ContaPoupanca; 
+-investir na poupança rende um taxa de 2%
 ### contaInvestimento
 - Filha da classe Conta, com uma sobreescrita do método "getSaldo"
 - a taxa de rendimento da pessoa física poderá ser alterada com o método setTaxaRendimento. A taxa da pessoa física é a taxa básica, sendo que a taxa da pessoa jurídica será sempre a taxa básica mais 2%; 
 - o valor dos juros pode pode ser obtido com o método jurosInvestimento. O método getSaldo permite obter os valor dos investimentos com juros.
+investir na poupança rende um taxa de 2% e for PJ o rendimento é de 4%
 ### contaPoupança
 - Implementamos a interface com o método OperacaoConsultaSaldo, OperacaoInvestir, que foi detalhado nas classes ContaCorrente e ContaPoupanca; 
 - Pessoa jurídica não pode abrir Conta Poupança;
+- investir na poupança rende um taxa de 1.5%
 
