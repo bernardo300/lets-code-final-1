@@ -28,8 +28,9 @@ public class ContaCorrente extends Conta implements OperacaoConsultaSaldo, Opera
     }
 
     @Override
-    public BigDecimal investir() {   
-        return  getSaldo().multiply(this.taxaRendimento.divide(new BigDecimal(100))).add(getSaldo()).setScale(2,RoundingMode.DOWN);
+    public BigDecimal investir() {  
+        super.setSaldo(getSaldo().multiply(this.taxaRendimento.divide(new BigDecimal(100))).add(getSaldo()).setScale(2,RoundingMode.DOWN)); 
+        return  super.getSaldo();
     }
 
     @Override
