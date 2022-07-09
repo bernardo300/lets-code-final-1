@@ -28,7 +28,8 @@ A classe Conta é uma classe abstrata com os atributos:
 - contas que começam com "0" são pessoas jurídicas;
 - contas que começam com "11" são pessoas físicas;
 ### ContaCorrente
-Filha da classe Conta, com uma sobreescrita do método "sacar" 
+Filha da classe Conta, com uma sobreescrita do método "sacar";
+- A conta corrente pode ter rendimentos, sendo o valor da taxa definido em percentual., ex.:100%. O valor é definido via método setTaxaRendimento;
 - ### Transferências
 - As transferências para outros titulares ou bancso somente são feitas a partir da conta corrente. 
 - Transferências entre contas correntes, investimento e poupança do mesmo titular e banco não sofrem taxação.
