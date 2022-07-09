@@ -118,7 +118,7 @@ public class Aplicacao {
         System.out.println("3 - TRANSFERIR");
         System.out.println("4 - SAIR");
         int escolha = scanner.nextInt();
-        System.out.println("Informe valor no formato 9999.00");
+        System.out.println("Informe valor no formato 9999.99");
         switch(escolha){
             case 1:
                 {
