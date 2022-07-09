@@ -1,5 +1,6 @@
 package br.com.mybank.models.conta;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import br.com.mybank.models.cliente.Cliente;
 import br.com.mybank.models.cliente.ClientePessoaJuridica;
@@ -20,11 +21,9 @@ public class ContaInvestimento extends Conta{
         return this.saldoInvestimento.multiply(this.taxaRendimento);
     }
 
-    public BigDecimal investir(){
-        this.saldoInvestimento = super.getSaldo();
-        this.saldoInvestimento = this.saldoInvestimento.add(jurosInvestimento());
-        super.setSaldo(this.saldoInvestimento);
-        return super.getSaldo();
+    public BigDecimal investir() {
+        setSaldo(getSaldo().multiply(this.taxaRendimento.divide(new BigDecimal(100))).add(getSaldo()).setScale(2,RoundingMode.DOWN));
+        return getSaldo();
     }
     
     public BigDecimal getTaxaRendimento() {
