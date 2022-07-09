@@ -38,7 +38,6 @@ public class Aplicacao {
             default:
                 System.out.println("opção inválida");
         }
-        //scanner.close();
     }
 
     private static void menuNovaConta() throws MensagemErro {
@@ -59,10 +58,7 @@ public class Aplicacao {
         int clienteTipo = scanner.nextInt();
         Cliente cliente = verificaTipoCliente(clienteTipo, nomeCliente);
         Conta c = menuTipoConta(agencia, numero, cliente);
-        //   ContaCorrente c = new ContaCorrente(agencia, numero, new ClientePessoaFisica(cliente));
-        
         MyBankDB.abrirConta(c);
-        //scanner.close();
         menuPrincipal();
     }
 
@@ -78,6 +74,7 @@ public class Aplicacao {
         System.out.println("Qual tipo de conta voce deseja abrir?");
         System.out.println("1 - CONTA CORRENTE");
         System.out.println("2 - CONTA POUPANÇA");
+        System.out.println("3 - CONTA INVESTIMENTO");
         int escolha = scanner.nextInt();
         if(escolha == 2 && (tipoCliente instanceof ClientePessoaJuridica)){
             System.out.println("Pessoa jurídica não pode abrir conta poupança");
