@@ -25,7 +25,8 @@ Serão avaliados os seguintes quesitos:
 A classe Conta é uma classe abstrata com os atributos:
 - agencia -> do tipo String;
 - numeroConta -> do tipo inteiro;
-- contas que começam com "10" são pessoas jurídicas;
+- contas que começam com "0" são pessoas jurídicas;
+- contaas que começam com "11" são pessoas físicas;
 ### ContaCorrente
 Filha da classe Conta, com uma sobreescrita do método "sacar" 
 - ### Transferências
