@@ -27,6 +27,7 @@ A classe Conta é uma classe abstrata com os atributos:
 - numeroConta -> do tipo inteiro;
 - contas que começam com "0" são pessoas jurídicas;
 - contas que começam com "11" são pessoas físicas;
+- os valores devem ser informados no formato 9999,99;
 - criamos 2 contas na class Aplicação para testes, com a agência default "00" para ambas:
 -  "0"  para pessoa jurídica e
 -  "11" para pessoa física;
