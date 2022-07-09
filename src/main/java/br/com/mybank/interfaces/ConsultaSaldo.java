@@ -1,4 +1,5 @@
 package br.com.mybank.interfaces;
+import java.math.BigDecimal;
 
 public interface ConsultaSaldo {
 
