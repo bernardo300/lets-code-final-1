@@ -3,12 +3,11 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import br.com.mybank.interfaces.OperacaoConsultaSaldo;
-import br.com.mybank.interfaces.OperacaoInvestir;
 import br.com.mybank.models.cliente.Cliente;
 import br.com.mybank.models.cliente.ClientePessoaFisica;
 import br.com.mybank.models.exceptions.MensagemErro;
 
-public class ContaCorrente extends Conta implements OperacaoConsultaSaldo, OperacaoInvestir{
+public class ContaCorrente extends Conta implements OperacaoConsultaSaldo{
     public ContaCorrente(String agencia, int conta, Cliente titular){
         super(agencia, conta, titular);
     }

@@ -2,10 +2,11 @@ package br.com.mybank.models.conta;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import br.com.mybank.interfaces.OperacaoInvestir;
 import br.com.mybank.models.cliente.Cliente;
 import br.com.mybank.models.exceptions.MensagemErro;
 
-public abstract class Conta {
+public abstract class Conta implements OperacaoInvestir{
     protected BigDecimal taxaRendimento = new BigDecimal(2);
     protected BigDecimal saldoInvestimento = new BigDecimal(0);
     protected BigDecimal taxa = new BigDecimal(0.5);

@@ -1,6 +1,7 @@
 package br.com.mybank;
 
 import java.math.BigDecimal;
+import java.rmi.server.RemoteStub;
 import java.util.Scanner;
 
 import br.com.mybank.db.MyBankDB;
@@ -9,6 +10,8 @@ import br.com.mybank.models.cliente.ClientePessoaFisica;
 import br.com.mybank.models.cliente.ClientePessoaJuridica;
 import br.com.mybank.models.conta.Conta;
 import br.com.mybank.models.conta.ContaCorrente;
+import br.com.mybank.models.conta.ContaInvestimento;
+import br.com.mybank.models.conta.ContaPoupanca;
 import br.com.mybank.models.exceptions.MensagemErro;
 
 public class Aplicacao {
@@ -80,7 +83,16 @@ public class Aplicacao {
             System.out.println("Pessoa jurídica não pode abrir conta poupança");
             menuPrincipal();
         }
-        return new ContaCorrente(agencia, numero, tipoCliente);   
+        switch(escolha){
+            case 1:
+                return new  ContaCorrente(agencia, numero, tipoCliente);  
+            case 2:
+                return new ContaPoupanca(agencia, numero, (ClientePessoaFisica)tipoCliente);
+            case 3:
+                return new ContaInvestimento(agencia, numero, tipoCliente); 
+            default:
+                throw new MensagemErro("Escolha invalida");  
+        }
     }
 
     private static void menuLogin() throws MensagemErro {
@@ -113,7 +125,8 @@ public class Aplicacao {
         System.out.println("1 - DEPOSITAR");
         System.out.println("2 - SACAR");
         System.out.println("3 - TRANSFERIR");
-        System.out.println("4 - SAIR");
+        System.out.println("4 - INVESTIR");
+        System.out.println("5 - SAIR");
         int escolha = scanner.nextInt();
         System.out.println("Informe valor no formato 9999.99");
         switch(escolha){
@@ -143,6 +156,10 @@ public class Aplicacao {
                     break;
                 }
             case 4:
+                conta.investir();
+                menuConta(conta.getConta());
+                break;
+            case 5:
                 menuPrincipal();
                 break;
             default:
@@ -166,11 +183,17 @@ public class Aplicacao {
  
     public static void basePovoar() throws MensagemErro{
         Conta contaCorrente = new ContaCorrente("00", 0, new ClientePessoaJuridica("Bernardo"));
-        Conta contaPoupanca = new ContaCorrente("00", 11, new ClientePessoaFisica("Ana"));
+        Conta contaPoupanca = new ContaPoupanca("00", 11, new ClientePessoaFisica("Ana"));
+        Conta contaInvestimento = new ContaInvestimento("00", 22, new ClientePessoaJuridica("Kennedy"));
+        
         contaCorrente.depositar(new BigDecimal("1000.00"));
         contaPoupanca.depositar(BigDecimal.valueOf(500.00d));
+        contaInvestimento.depositar(BigDecimal.valueOf(1000.00d));
+
         MyBankDB.abrirConta(contaCorrente);
         MyBankDB.abrirConta(contaPoupanca);
+        MyBankDB.abrirConta(contaInvestimento);
+
     }
     
     private static void clear(){

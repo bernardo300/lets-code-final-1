@@ -3,11 +3,10 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import br.com.mybank.interfaces.OperacaoConsultaSaldo;
-import br.com.mybank.interfaces.OperacaoInvestir;
 import br.com.mybank.models.cliente.ClientePessoaFisica;
 
 
-public class ContaPoupanca extends Conta implements OperacaoInvestir, OperacaoConsultaSaldo{
+public class ContaPoupanca extends Conta implements OperacaoConsultaSaldo{
     private BigDecimal taxaRendimento = new BigDecimal(1.5);
 
     public ContaPoupanca(String agencia, int conta, ClientePessoaFisica titular){

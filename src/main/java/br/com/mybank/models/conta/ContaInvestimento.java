@@ -4,7 +4,6 @@ import java.math.RoundingMode;
 
 import br.com.mybank.models.cliente.Cliente;
 import br.com.mybank.models.cliente.ClientePessoaJuridica;
-
 public class ContaInvestimento extends Conta{
 
 
@@ -12,16 +11,10 @@ public class ContaInvestimento extends Conta{
         super(agencia, conta, titular);
     }
 
-    private BigDecimal jurosInvestimento(){
-        if(getTitular() instanceof ClientePessoaJuridica) {
-            this.setTaxaRendimento(this.taxaRendimento.add(new BigDecimal(2)));
-        }
-
-        this.saldoInvestimento = super.getSaldo();
-        return this.saldoInvestimento.multiply(this.taxaRendimento);
-    }
-
     public BigDecimal investir() {
+        if(getTitular() instanceof ClientePessoaJuridica){
+            this.taxaRendimento = this.taxaRendimento.add(new BigDecimal(2));
+        }     
         setSaldo(getSaldo().multiply(this.taxaRendimento.divide(new BigDecimal(100))).add(getSaldo()).setScale(2,RoundingMode.DOWN));
         return getSaldo();
     }
