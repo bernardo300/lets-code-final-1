@@ -1,6 +1,7 @@
 package br.com.mybank.models.conta;
 import java.math.BigDecimal;
 
+import br.com.mybank.interfaces.ConsultaSaldo;
 import br.com.mybank.models.cliente.Cliente;
 import br.com.mybank.models.cliente.ClientePessoaFisica;
 import br.com.mybank.models.exceptions.MensagemErro;
