@@ -17,7 +17,7 @@ public class Aplicacao {
         menuPrincipal();
     }
     public static void menuPrincipal() throws MensagemErro{
-    //    clear();
+        clear();
         Scanner scanner = new Scanner(System.in);
         System.out.println("___________________________________");
         System.out.println("|          __SISBB__              |");
