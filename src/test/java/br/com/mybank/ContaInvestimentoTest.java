@@ -42,16 +42,16 @@ public class ContaInvestimentoTest {
   @DisplayName("Investir saldo conta corrente")
   @Order(1)
   public void testInvestirContaCorrente() throws MensagemErro{
-    System.out.println(contaCorrente.investir());
-    assertTrue(1 == 1);
+    contaCorrente.investir();
+    assertTrue(contaCorrente.getSaldo().compareTo(new BigDecimal("1020.00")) == 0);
   }
 
   @Test
   @DisplayName("Investir saldo conta investimento")
   @Order(2)
   public void testInvestirContaInvestimento() throws MensagemErro{
-    System.out.println(contaInvestimento.investir());
-    assertTrue(1 == 1);
+    contaInvestimento.investir();
+    assertTrue(contaInvestimento.getSaldo().compareTo(new BigDecimal("1040.00")) == 0);
   }
 
 
@@ -59,8 +59,8 @@ public class ContaInvestimentoTest {
   @DisplayName("Investir saldo conta poupanca")
   @Order(3)
   public void testInvestirContaPoupanca() throws MensagemErro{
-    System.out.println(contaPoupanca.investir());
-    assertTrue(1 == 1);
+    contaPoupanca.investir();
+    assertTrue(contaPoupanca.getSaldo().compareTo(new BigDecimal("1015.00")) == 0);
   }
 
   // @BeforeEach
@@ -71,6 +71,9 @@ public class ContaInvestimentoTest {
   @AfterEach
   public void endEach(TestInfo testInfo){
       System.out.println(testInfo.getDisplayName());
-      System.out.println("Saldo Conta corrente " + contaCorrente.getSaldo());;
+      System.out.println("Saldo Conta corrente " + contaCorrente.getSaldo());
+      System.out.println("Saldo Conta poupanca " + contaPoupanca.getSaldo());
+      System.out.println("Saldo Conta investimento " + contaInvestimento.getSaldo());
+
   }
 }
