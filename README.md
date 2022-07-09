@@ -25,7 +25,8 @@ Serão avaliados os seguintes quesitos:
 A classe Conta é uma classe abstrata com os atributos:
 - agencia -> do tipo String;
 - numeroConta -> do tipo inteiro;
-- contas que começam com "10" são pessoas jurídicas;
+- contas que começam com "0" são pessoas jurídicas;
+- contaas que começam com "11" são pessoas físicas;
 ### ContaCorrente
 Filha da classe Conta, com uma sobreescrita do método "sacar" 
 - ### Transferências
@@ -35,6 +36,6 @@ Filha da classe Conta, com uma sobreescrita do método "sacar"
 ### contaInvestimento
 - a taxa de rendimento da pessoa física poderá ser alterada com o método setTaxaRendimento. A taxa da pessoa física é a taxa básica, sendo que a taxa da pessoa jurídica será sempre a taxa básica mais 2%; 
 - o valor dos juros pode pode ser obtido com o método jurosInvestimento. O método getSaldo permite obter os valor dos investimentos com juros.
--### contaPoupança
+### contaPoupança
 - Implementamos a interface com o método consultaSaldo, que foi detalhado nas classes ContaCorrente e ContaPoupanca; 
 
