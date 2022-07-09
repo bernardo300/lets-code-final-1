@@ -1,9 +1,8 @@
 package br.com.mybank.interfaces;
 import java.math.BigDecimal;
 
-import java.math.BigDecimal;
 
-public interface ConsultaSaldo {
+public interface OperacaoConsultaSaldo {
 
   /**
    * Implementar na conta corrente e conta poupanca

@@ -6,6 +6,37 @@ import br.com.mybank.models.cliente.Cliente;
 import br.com.mybank.models.exceptions.MensagemErro;
 
 public abstract class Conta {
+    protected BigDecimal taxaRendimento = new BigDecimal(2);
+    protected BigDecimal saldoInvestimento = new BigDecimal(0);
+    protected BigDecimal taxa = new BigDecimal(0.5);
+    public BigDecimal getTaxa() {
+        return taxa;
+    }
+
+
+    public void setTaxa(BigDecimal taxa) {
+        this.taxa = taxa;
+    }
+
+
+    public BigDecimal getTaxaRendimento() {
+        return taxaRendimento;
+    }
+
+
+    public void setTaxaRendimento(BigDecimal taxaRendimento) {
+        this.taxaRendimento = taxaRendimento;
+    }
+
+    public BigDecimal getSaldoInvestimento() {
+        return saldoInvestimento;
+    }
+
+
+    public void setSaldoInvestimento(BigDecimal saldoInvestimento) {
+        this.saldoInvestimento = saldoInvestimento;
+    }
+
     private BigDecimal saldo = new BigDecimal(0);
     private int conta = 0;
     private String agencia;
@@ -40,18 +71,23 @@ public abstract class Conta {
         this.saldo = saldo.setScale(2, RoundingMode.DOWN);
         return saldo;
     }
+
     public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
     }
+
     public int getConta() {
         return conta;
     }
+
     public void setConta(int conta) {
         this.conta = conta;
     }
+
     public String getAgencia() {
         return agencia;
     }
+    
     public void setAgencia(String agencia) {
         this.agencia = agencia;
     }

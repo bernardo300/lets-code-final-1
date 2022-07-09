@@ -1,50 +1,39 @@
 package br.com.mybank.models.conta;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
-import br.com.mybank.interfaces.ConsultaSaldo;
+import br.com.mybank.interfaces.OperacaoConsultaSaldo;
+import br.com.mybank.interfaces.OperacaoInvestir;
 import br.com.mybank.models.cliente.Cliente;
 import br.com.mybank.models.cliente.ClientePessoaFisica;
 import br.com.mybank.models.exceptions.MensagemErro;
 
-public class ContaCorrente extends Conta{
-    private BigDecimal limite = new BigDecimal(0);
-    private BigDecimal taxa = new BigDecimal(0.5);
-    private BigDecimal valor = new BigDecimal(0);
-    private BigDecimal valorTaxa = new BigDecimal(0);
-
-//    public ContaCorrente(String agencia, int conta, BigDecimal valor){
+public class ContaCorrente extends Conta implements OperacaoConsultaSaldo, OperacaoInvestir{
     public ContaCorrente(String agencia, int conta, Cliente titular){
         super(agencia, conta, titular);
     }
 
     public void sacar(BigDecimal valor) throws MensagemErro{
-        if(getTitular() instanceof ClientePessoaFisica) {                // falta passar tipoCliente via Cliente via setTipoCliente
+        if(getTitular() instanceof ClientePessoaFisica) {
             super.sacar(valor);
         } else {
-            valorTaxa = calculaValorTaxa(valor);
-            this.valor = valor.add(valorTaxa);
-            super.sacar(this.valor);
+            super.taxa = calculaValorTaxa(valor);
+            valor = valor.add(this.taxa);
+            super.sacar(valor);
         }
     }
 
-    public BigDecimal calculaValorTaxa(BigDecimal valor){  
-        this.valorTaxa = valor.multiply(this.taxa.divide(new BigDecimal(100)));  
-        return this.valorTaxa;
+    private BigDecimal calculaValorTaxa(BigDecimal valor){  
+        return valor.multiply(this.taxa.divide(new BigDecimal(100)));
     }
 
-    public BigDecimal getLimite() {
-        return limite;
+    @Override
+    public BigDecimal investir() {   
+        return  getSaldo().multiply(this.taxaRendimento.divide(new BigDecimal(100))).add(getSaldo()).setScale(2,RoundingMode.DOWN);
     }
 
-    public void setLimite(BigDecimal limite) {
-        this.limite = limite;
-    }
-
-    public BigDecimal getTaxa() {
-        return taxa;
-    }
-
-    public void setTaxa(BigDecimal taxa) {
-        this.taxa = taxa;
+    @Override
+    public BigDecimal consultarSaldo() {
+        return getSaldo();
     }
 }

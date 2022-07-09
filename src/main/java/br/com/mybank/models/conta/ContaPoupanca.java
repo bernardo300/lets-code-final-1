@@ -1,19 +1,20 @@
 package br.com.mybank.models.conta;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
+import br.com.mybank.interfaces.OperacaoConsultaSaldo;
+import br.com.mybank.interfaces.OperacaoInvestir;
 import br.com.mybank.models.cliente.ClientePessoaFisica;
-import br.com.mybank.interfaces.ConsultaSaldo;
 
 
-public class ContaPoupanca extends Conta{
-    private BigDecimal taxaRendimento = new BigDecimal(0);
+public class ContaPoupanca extends Conta implements OperacaoInvestir, OperacaoConsultaSaldo{
+    private BigDecimal taxaRendimento = new BigDecimal(1.5);
     private BigDecimal juros = new BigDecimal(0);
     private BigDecimal saldoPoupanca = new BigDecimal(0);
 
-    //public ContaPoupanca(String agencia, int conta, BigDecimal valor){
-        public ContaPoupanca(String agencia, int conta, ClientePessoaFisica titular){
-            super(agencia, conta, titular);
-        }
+    public ContaPoupanca(String agencia, int conta, ClientePessoaFisica titular){
+        super(agencia, conta, titular);
+    }
 
     public BigDecimal jurosPoupanca(){
         this.saldoPoupanca = super.getSaldo();
@@ -41,5 +42,16 @@ public class ContaPoupanca extends Conta{
     }
     public void setJuros(BigDecimal juros) {
         this.juros = juros;
+    }
+
+    @Override
+    public BigDecimal investir() {
+
+        return  getSaldo().multiply(this.taxaRendimento.divide(new BigDecimal(100))).add(getSaldo()).setScale(2,RoundingMode.DOWN);
+    }
+
+    @Override
+    public BigDecimal consultarSaldo() {
+        return juros;
     }
 }
