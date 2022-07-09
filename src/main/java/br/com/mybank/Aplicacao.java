@@ -12,13 +12,15 @@ import br.com.mybank.models.conta.ContaCorrente;
 import br.com.mybank.models.exceptions.MensagemErro;
 
 public class Aplicacao {
+    public static Scanner scanner = new Scanner(System.in);
+    
     public static void main(String[] args) throws MensagemErro {
-        //basePovoar();
+        basePovoar();
+        
         menuPrincipal();
     }
     public static void menuPrincipal() throws MensagemErro{
         clear();
-        Scanner scanner = new Scanner(System.in);
         System.out.println("___________________________________");
         System.out.println("|          __SISBB__              |");
         System.out.println("|                                 |");
@@ -36,12 +38,11 @@ public class Aplicacao {
             default:
                 System.out.println("opcao invalida");
         }
-        scanner.close();
+        //scanner.close();
     }
 
     private static void menuNovaConta() throws MensagemErro {
         clear();
-        Scanner scanner = new Scanner(System.in);
         System.out.println("___________________________________");
         System.out.println("           --SISBB--               ");
 
@@ -51,56 +52,52 @@ public class Aplicacao {
         int numero = scanner.nextInt();
         System.out.println("Nome do cliente: ");
         scanner.nextLine();
-        String cliente = scanner.nextLine();
-        Cliente tipoCliente = verificaTipoCliente(numero, cliente);
-        ContaCorrente c = new ContaCorrente(agencia, numero, tipoCliente);
-        //    ContaCorrente c = new ContaCorrente(agencia, numero, new ClientePessoaFisica(cliente));
-        menuTipoConta(numero, tipoCliente);
+        String nomeCliente = scanner.nextLine();
+        System.out.println("Você é pessoa fisica ou juridica?");
+        System.out.println("1 - FISICA");
+        System.out.println("2 - JURIDICA");
+        int clienteTipo = scanner.nextInt();
+        Cliente cliente = verificaTipoCliente(clienteTipo, nomeCliente);
+        Conta c = menuTipoConta(agencia, numero, cliente);
+        //   ContaCorrente c = new ContaCorrente(agencia, numero, new ClientePessoaFisica(cliente));
+        
         MyBankDB.abrirConta(c);
-        scanner.close();
+        //scanner.close();
         menuPrincipal();
     }
 
-    private static Cliente verificaTipoCliente(int numero, String cliente){
-        String tipoConta = Integer.toString(numero);
-        tipoConta = tipoConta.substring(0,2);
-        Cliente tipoCliente;
-        if(tipoConta.equals("10")){
-            tipoCliente = new ClientePessoaJuridica(cliente);
-        } else {
-            tipoCliente = new ClientePessoaFisica(cliente);
+    private static Cliente verificaTipoCliente(int cliente, String nomeCliente){
+        if(cliente == 1){
+            return new ClientePessoaFisica(nomeCliente);
         }
-        return tipoCliente;
+        return new ClientePessoaJuridica(nomeCliente);
     }
 
-    private static void menuTipoConta(int numero, Cliente tipoCliente) throws MensagemErro {
+    private static Conta menuTipoConta(String agencia, int numero, Cliente tipoCliente) throws MensagemErro {
         clear();
-        System.out.println("CONTA CORRENTE: 1");
-        System.out.println("CONTA POUPANÇA: 2");
-        Scanner scanner = new Scanner(System.in);
+        System.out.println("Qual tipo de conta voce deseja abrir?");
+        System.out.println("1 - CONTA CORRENTE");
+        System.out.println("2 - CONTA POUPANÇA");
         int escolha = scanner.nextInt();
         if(escolha == 2 && (tipoCliente instanceof ClientePessoaJuridica)){
             System.out.println("Pessoa jurídica não pode abrir conta poupança");
             menuPrincipal();
         }
-        scanner.close();
+        return new ContaCorrente(agencia, numero, tipoCliente);   
     }
 
     private static void menuLogin() throws MensagemErro {
         clear();
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Numero da conta pra logar: ");
         int numero = scanner.nextInt();
         Conta c = MyBankDB.login(numero);
         if(c != null){
             menuConta(numero);
         }
-        scanner.close();
     }
 
     private static Conta contaDestino() {
         clear();
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Numero da conta de destino: ");
         int numero = scanner.nextInt();
         Conta dest = MyBankDB.login(numero);
@@ -108,38 +105,53 @@ public class Aplicacao {
             System.out.println("conta inválida");
             scanner.close();
         }
-        scanner.close();
         return dest;
     }
 
     private static void menuConta(int numero) throws MensagemErro {
         clear();
         Conta conta = MyBankDB.login(numero);
-        System.out.println("DEPOSITAR   : 1");
-        System.out.println("SACAR       : 2");
-        System.out.println("TRANSFERIR  : 3");
-        Scanner scanner = new Scanner(System.in);
+        System.out.println("Olá, " + conta.getTitular().getNome());
+        System.out.println("Saldo da sua conta: " + conta.getSaldo());
+        System.out.println("1 - DEPOSITAR");
+        System.out.println("2 - SACAR");
+        System.out.println("3 - TRANSFERIR");
+        System.out.println("4 - SAIR");
         int escolha = scanner.nextInt();
         System.out.println("Informe valor no formato 9999.00");
-        double infoValor = scanner.nextDouble();
-        BigDecimal valor = BigDecimal.valueOf(infoValor);
-        scanner.close();
         switch(escolha){
             case 1:
-                menuDepositar(valor, conta);
-                break;
+                {
+                    double infoValor = scanner.nextDouble();
+                    BigDecimal valor = BigDecimal.valueOf(infoValor);
+                    menuDepositar(valor, conta);
+                    menuConta(conta.getConta());
+                    break;
+                }
             case 2:
-                menuSacar(valor, conta);
-                break;
+                {
+                    double infoValor = scanner.nextDouble();
+                    BigDecimal valor = BigDecimal.valueOf(infoValor);
+                    menuSacar(valor, conta);
+                    menuConta(conta.getConta());
+                    break;
+                }
             case 3:
-                Conta dest = contaDestino();
-                menuTransferir(valor, conta, dest);
+                {
+                    double infoValor = scanner.nextDouble();
+                    BigDecimal valor = BigDecimal.valueOf(infoValor);
+                    Conta dest = contaDestino();
+                    menuTransferir(valor, conta, dest);
+                    menuConta(conta.getConta());
+                    break;
+                }
+            case 4:
+                menuPrincipal();
                 break;
             default:
                 System.out.println("opcao invalida");
                 break;
         }
-        scanner.close();
     }
  
     private static void menuDepositar(BigDecimal valor, Conta conta) throws MensagemErro {
@@ -155,8 +167,13 @@ public class Aplicacao {
     }
 
  
-    public static void basePovoar(){
-
+    public static void basePovoar() throws MensagemErro{
+        Conta contaCorrente = new ContaCorrente("00", 0, new ClientePessoaJuridica("Bernardo"));
+        Conta contaPoupanca = new ContaCorrente("00", 11, new ClientePessoaFisica("Ana"));
+        contaCorrente.depositar(new BigDecimal("1000.00"));
+        contaPoupanca.depositar(BigDecimal.valueOf(500.00d));
+        MyBankDB.abrirConta(contaCorrente);
+        MyBankDB.abrirConta(contaPoupanca);
     }
     
     private static void clear(){
