@@ -2,6 +2,8 @@ package br.com.mybank.models.conta;
 import java.math.BigDecimal;
 
 import br.com.mybank.models.cliente.ClientePessoaFisica;
+import br.com.mybank.interfaces.ConsultaSaldo;
+
 
 public class ContaPoupanca extends Conta{
     private BigDecimal taxaRendimento = new BigDecimal(0);
