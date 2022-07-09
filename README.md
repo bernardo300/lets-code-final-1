@@ -28,8 +28,8 @@ A classe Conta é uma classe abstrata com os atributos:
 - contas que começam com "0" são pessoas jurídicas;
 - contas que começam com "11" são pessoas físicas;
 - criamos 2 contas na class Aplicação para testes, com a agência default "00" para ambas:
--     "0"  para pessoa jurídica e
--     "11" para pessoa física;
+-   "0"  para pessoa jurídica e
+-   "11" para pessoa física;
 ### ContaCorrente
 Filha da classe Conta, com uma sobreescrita do método "sacar";
 - A conta corrente pode ter rendimentos, sendo o valor da taxa definido em percentual., ex.:100%. O valor é definido via método setTaxaRendimento;
