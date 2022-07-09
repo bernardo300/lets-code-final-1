@@ -31,7 +31,7 @@ A classe Conta é uma classe abstrata com os atributos:
 Filha da classe Conta, com uma sobreescrita do método "sacar";
 - A conta corrente pode ter rendimentos, sendo o valor da taxa definido em percentual., ex.:100%. O valor é definido via método setTaxaRendimento;
 - ### Transferências
-- As transferências para outros titulares ou bancso somente são feitas a partir da conta corrente. 
+- As transferências para outros titulares somente são feitas a partir da conta corrente. 
 - Transferências entre contas correntes, investimento e poupança do mesmo titular e banco não sofrem taxação.
 - Implementamos a interface com o método OperacaoConsultaSaldo, OperacaoInvestir, que foi detalhado nas classes ContaCorrente e ContaPoupanca; 
 ### contaInvestimento
