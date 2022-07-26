@@ -6,16 +6,16 @@ import java.math.RoundingMode;
 public abstract class Cliente {
     private String nome;
     private BigDecimal desconto = BigDecimal.ZERO; 
-    private Integer diariasMin;
+    private Integer diariasMinimasParaDesconto;
      
-    public Cliente(String nome, BigDecimal desconto, Integer diariasMin){
+    public Cliente(String nome, BigDecimal desconto, Integer diariasMinimasParaDesconto){
         this.nome = nome;
         this.desconto = desconto;
-        this.diariasMin = diariasMin;
+        this.diariasMinimasParaDesconto = diariasMinimasParaDesconto;
     }
 
     public BigDecimal getDesconto(Integer diarias) {
-        if(diarias > diariasMin) {
+        if(diarias > diariasMinimasParaDesconto) {
             return desconto.setScale(2, RoundingMode.DOWN);
         }
         return BigDecimal.ZERO;

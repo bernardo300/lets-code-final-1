@@ -4,7 +4,11 @@ import java.math.BigDecimal;
 
 public class VeiculoPequeno extends Veiculo {
 
-    public VeiculoPequeno(String tipo, BigDecimal diariaAluguel){
-        super("pequeno", new BigDecimal(100));
+    public VeiculoPequeno(){
+        super(new BigDecimal(100));
+    }
+
+    public VeiculoPequeno(BigDecimal diariaAluguel){
+        super(diariaAluguel);
     }
 }
