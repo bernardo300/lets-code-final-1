@@ -7,6 +7,7 @@ public class Veiculo {
     BigDecimal diariaAluguel = BigDecimal.ZERO;
 
     public Veiculo(String tipo, BigDecimal diariaAluguel) {
+        this.diariaAluguel = diariaAluguel;
     }
     public String getTipo() {
         return tipo;

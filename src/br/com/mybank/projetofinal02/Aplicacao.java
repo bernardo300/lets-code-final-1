@@ -7,6 +7,7 @@ public class Aplicacao {
         Veiculo veiculo = new VeiculoMedio("medio");
 
         Aluguel aluga = new Aluguel(cliente, veiculo, 8);
+        aluga.calculaAluguel(cliente, veiculo, 8);
     }
     
 }

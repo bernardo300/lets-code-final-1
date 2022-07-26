@@ -1,6 +1,7 @@
 package models;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public abstract class Cliente {
     private String nome;
@@ -15,7 +16,7 @@ public abstract class Cliente {
 
     public BigDecimal getDesconto(Integer diarias) {
         if(diarias > diariasMin) {
-            return desconto;
+            return desconto.setScale(2, RoundingMode.DOWN);
         }
         return BigDecimal.ZERO;
     }
