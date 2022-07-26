@@ -3,14 +3,13 @@ package models;
 import java.math.BigDecimal;
 
 public class ClientePessoaFisica extends Cliente{
-    private String cpf;
-//    private BigDecimal desconto = BigDecimal.ZERO;
+    String cpf;
 
-    public ClientePessoaFisica(String nome, String cpf) {
-        super(nome,new BigDecimal(10), 5);
+    public ClientePessoaFisica(String nome) {
+        super(nome,new BigDecimal(0.05), 5);
     }
 
-    public ClientePessoaFisica(String nome, String cpf, BigDecimal desconto, Integer diariaMin) {
+    public ClientePessoaFisica(String nome, BigDecimal desconto, Integer diariaMin) {
         super(nome,desconto, diariaMin);
         }
 

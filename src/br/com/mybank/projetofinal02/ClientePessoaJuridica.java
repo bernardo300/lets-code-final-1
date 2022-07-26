@@ -4,13 +4,12 @@ import java.math.BigDecimal;
 
 public class ClientePessoaJuridica extends Cliente{
     private String Cnpj;
-//  private BigDecimal desconto = BigDecimal.ZERO;
      
-    public ClientePessoaJuridica(String nome, String cpf) {
-        super(nome,new BigDecimal(10), 5);
+    public ClientePessoaJuridica(String nome) {
+        super(nome,new BigDecimal(0.10), 3);
     }
 
-    public ClientePessoaJuridica(String nome, String cpf, BigDecimal desconto, Integer diariaMin) {
+    public ClientePessoaJuridica(String nome, BigDecimal desconto, Integer diariaMin) {
         super(nome,desconto, diariaMin);
         }
 

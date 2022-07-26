@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 
 public class Veiculo {
     String tipo;
-    BigDecimal diaria = BigDecimal.ZERO;
+    BigDecimal diariaAluguel = BigDecimal.ZERO;
 
-    public Veiculo(String tipo, BigDecimal diaria) {
+    public Veiculo(String tipo, BigDecimal diariaAluguel) {
     }
     public String getTipo() {
         return tipo;
@@ -14,10 +14,10 @@ public class Veiculo {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    public BigDecimal getDiaria() {
-        return diaria;
+    public BigDecimal getDiariaAluguel() {
+        return this.diariaAluguel;
     }
-    public void setDiaria(BigDecimal diaria) {
-        this.diaria = diaria;
+    public void setDiariaAluguel(BigDecimal diariaAluguel) {
+        this.diariaAluguel = diariaAluguel;
     }
 }
