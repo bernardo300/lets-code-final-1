@@ -19,6 +19,7 @@ public class Aluguel {
         System.out.println("desconto: " + cliente.getDesconto(diarias));
         veiculo.getDiariaAluguel();
         System.out.println("diariaaluguel: " + veiculo.getDiariaAluguel());
+        System.out.println("diarias: " + diarias);
 
         valorTotal = new BigDecimal(this.diarias).multiply(veiculo.getDiariaAluguel()).multiply
           (new BigDecimal(1).subtract(cliente.getDesconto(diarias)));
