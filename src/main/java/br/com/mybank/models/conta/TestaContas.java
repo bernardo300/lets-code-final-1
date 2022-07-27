@@ -1,6 +1,10 @@
-package br.com.mybank.projeto1;
+package br.com.mybank.models.conta;
 
 import java.math.BigDecimal;
+
+import br.com.mybank.models.cliente.ClientePessoFisica;
+import br.com.mybank.models.cliente.ClientePessoaJuridica;
+import br.com.mybank.models.exceptions.MensagemErro;
 
 public class TestaContas{
     
