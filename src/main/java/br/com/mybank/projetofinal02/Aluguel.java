@@ -15,14 +15,14 @@ public class Aluguel {
     }
 
     public void calculaAluguel(){
-        cliente.getDesconto(diarias);
-        System.out.println("desconto: " + cliente.getDesconto(diarias));
+        cliente.getTaxaDesconto(diarias);
+        System.out.println("Taxa de desconto: " + cliente.getTaxaDesconto(diarias));
         veiculo.getDiariaAluguel();
-        System.out.println("diariaaluguel: " + veiculo.getDiariaAluguel());
+        System.out.println("Valor da diria do aluguel: " + veiculo.getDiariaAluguel());
         System.out.println("diarias: " + diarias);
 
         valorTotal = new BigDecimal(this.diarias).multiply(veiculo.getDiariaAluguel()).multiply
-          (new BigDecimal(1).subtract(cliente.getDesconto(diarias)));
-        System.out.println("total do aluguel: " + valorTotal);
+          (new BigDecimal(1).subtract(cliente.getTaxaDesconto(diarias)));
+        System.out.println("Total do aluguel a ser pago: " + valorTotal);
     }
 }
