@@ -5,24 +5,24 @@ import java.math.RoundingMode;
 
 public abstract class Cliente {
     private String nome;
-    private BigDecimal desconto = BigDecimal.ZERO; 
+    private BigDecimal taxaDesconto = BigDecimal.ZERO; 
     private Integer diariasMinimasParaDesconto;
      
-    public Cliente(String nome, BigDecimal desconto, Integer diariasMinimasParaDesconto){
+    public Cliente(String nome, BigDecimal taxaDesconto, Integer diariasMinimasParaDesconto){
         this.nome = nome;
-        this.desconto = desconto;
+        this.taxaDesconto = taxaDesconto;
         this.diariasMinimasParaDesconto = diariasMinimasParaDesconto;
     }
 
-    public BigDecimal getDesconto(Integer diarias) {
+    public BigDecimal getTaxaDesconto(Integer diarias) {
         if(diarias > diariasMinimasParaDesconto) {
-            return desconto.setScale(2, RoundingMode.DOWN);
+            return taxaDesconto.setScale(2, RoundingMode.DOWN);
         }
         return BigDecimal.ZERO;
     }
 
-    public void setDesconto(BigDecimal desconto) {
-        this.desconto = desconto;
+    public void setTaxaDesconto(BigDecimal desconto) {
+        this.taxaDesconto = desconto;
     }         
 
     public String getNome() {
