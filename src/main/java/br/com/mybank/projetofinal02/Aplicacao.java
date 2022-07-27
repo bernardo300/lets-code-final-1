@@ -1,4 +1,4 @@
-package models;
+package br.com.mybank.projetofinal02;
 
 public class Aplicacao {
     public static void main(String[] args) {

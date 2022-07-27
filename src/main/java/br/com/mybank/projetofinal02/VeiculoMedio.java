@@ -1,4 +1,4 @@
-package models;
+package br.com.mybank.projetofinal02;
 
 import java.math.BigDecimal;
 
