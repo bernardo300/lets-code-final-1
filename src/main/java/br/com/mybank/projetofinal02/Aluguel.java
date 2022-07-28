@@ -1,4 +1,4 @@
-package br.com.mybank.projetofinal02;
+package models;
 
 import java.math.BigDecimal;
 
@@ -15,14 +15,15 @@ public class Aluguel {
     }
 
     public void calculaAluguel(){
-        cliente.getTaxaDesconto(diarias);
-        System.out.println("Taxa de desconto: " + cliente.getTaxaDesconto(diarias));
+        cliente.getDesconto(diarias);
+  //      System.out.println("desconto: " + cliente.getDesconto(diarias));
         veiculo.getDiariaAluguel();
-        System.out.println("Valor da diria do aluguel: " + veiculo.getDiariaAluguel());
-        System.out.println("diarias: " + diarias);
+  //      System.out.println("diariaaluguel: " + veiculo.getDiariaAluguel());
+  //      System.out.println("diarias: " + diarias);
 
         valorTotal = new BigDecimal(this.diarias).multiply(veiculo.getDiariaAluguel()).multiply
-          (new BigDecimal(1).subtract(cliente.getTaxaDesconto(diarias)));
-        System.out.println("Total do aluguel a ser pago: " + valorTotal);
+          (new BigDecimal(1).subtract(cliente.getDesconto(diarias)));
+        System.out.printf("%s alugou veículo por %d dias, com diária de %.2f, com valor total de R$ %.2f.",  cliente.getNome(),
+          diarias, veiculo.getDiariaAluguel(), valorTotal);
     }
 }
