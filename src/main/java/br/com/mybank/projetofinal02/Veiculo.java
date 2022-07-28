@@ -2,7 +2,7 @@ package br.com.mybank.projetofinal02;
 
 import java.math.BigDecimal;
 
-public class Veiculo {
+public abstract class Veiculo {
     BigDecimal diariaAluguel = BigDecimal.ZERO;
 
     public Veiculo(BigDecimal diariaAluguel) {
